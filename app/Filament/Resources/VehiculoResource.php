@@ -30,7 +30,7 @@ class VehiculoResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('placa')->required()->maxLength(25)->unique('vehiculos', 'placa'),
+                Forms\Components\TextInput::make('placa')->required()->maxLength(25) ->unique(ignoreRecord: true),
 
                 Forms\Components\Select::make('marca_id')
                     ->label('Marca')
@@ -64,9 +64,9 @@ class VehiculoResource extends Resource
                     ->label('Año'),
 
 
-                Forms\Components\TextInput::make('numero_motor')->required()->maxLength(50)->label('Número de Motor')->unique('vehiculos', 'numero_motor'),
+                Forms\Components\TextInput::make('numero_motor')->required()->maxLength(50)->label('Número de Motor')  ->unique(ignoreRecord: true),
 
-                Forms\Components\TextInput::make('numero_chasis')->required()->maxLength(50)->label('Número de Chasis')->unique('vehiculos', 'numero_chasis'),
+                Forms\Components\TextInput::make('numero_chasis')->required()->maxLength(50)->label('Número de Chasis') ->unique(ignoreRecord: true),
 
             ]);
     }

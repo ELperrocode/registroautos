@@ -1,34 +1,44 @@
-HENRY MALDONADO ILS131
-Pasos para configurar el proyecto
+# Proyecto de Registro de Vehículos Henry Maldonado ILS131
+
 Este proyecto está construido con **Filament** y **Laravel**. A continuación, se detallan los pasos necesarios para configurar y ejecutar el proyecto en tu entorno local.
 
-https://filamentphp.com/docs/3.x/panels/installation ---Documentacion de la pagina de fillament
+## Documentación
 
+- [Documentación de Filament](https://filamentphp.com/docs/3.x/panels/installation)
 
-Luego de clonar el Repositorio
+## Pasos para Configurar el Proyecto
 
-Instalar Dependencias
+### 1. Clonar el Repositorio
+
+### 2. Instalar Dependencias
 -composer install
 -npm install
 
-Configurar el Archivo .env
+### 3.Configurar el Archivo .env
+-Configura las variables de entorno según tu entorno local
+-Copia el archivo .env.example a .env
 
--En caso de ser necesario  (ni idea de que eso profe me lo dijo chatgpt)  
--Generar la Clave de Aplicación
--Laravel utiliza una clave de aplicación (APP_KEY) para cifrar datos. Si no tienes una clave configurada, ejecuta el siguiente comando para generarla:
+ 
+### 4.Generar la Clave de Aplicación
+-Laravel utiliza una clave de aplicación (APP_KEY en el archivo .env) para cifrar datos. Si no tienes una clave configurada, ejecuta el siguiente comando para generarla:
 -php artisan key:generate
 
-Ejecutar Migraciones
+### 5.Ejecutar Migraciones y seeders
+#Las migraciones se usan para crear las tablas, recueda tener la base de datos creada y configurada en tu archivo .env
 -php artisan migrate
 
-Ejecutar Seeders
-#los seeder contienen datos de prueba como colores, marcas,modelos y tipos de vehiculos, se pueden agregar mas de ser necesario
+#los seeder contienen datos de prueba como colores, marcas,modelos y tipos de vehiculosy el usuario de test
 -php artisan db:seed
 
-Crear un Usuario de Filament
--php artisan make:filament-user
 
-Ingresar al login que se hace mediante agregando /admin a la ruta browser donde se tenga el proyecto
-con el usuario que creamos en el paso anterior
-en algunos casos dependiendo de que estes usando para levantar el servidor web habra que colocar el puerto a la ruta especificada
- en el "APP_URL" del  .env
+### 6.Ingresar al Panel de administracion
+#se hace agregando /admin a la ruta browser donde se tenga el proyecto ejemplo "http://localhost:8000/admin"
+#con el usuario y contraseña
+-test@example.com
+-123
+
+
+Nota
+En algunos casos, dependiendo de qué estés usando para levantar el servidor web, habrá que colocar el puerto a la ruta especificada en el APP_URL del archivo .env.
+
+Autor: Henry Maldonado 

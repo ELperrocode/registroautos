@@ -26,11 +26,13 @@ class VehiculoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-truck';
 
+    protected static ?string $navigationGroup = 'Vehiculos';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('placa')->required()->maxLength(25) ->unique(ignoreRecord: true),
+                Forms\Components\TextInput::make('placa')->required()->maxLength(25)->unique(ignoreRecord: true),
 
                 Forms\Components\Select::make('marca_id')
                     ->label('Marca')
@@ -52,21 +54,26 @@ class VehiculoResource extends Resource
 
 
                 Forms\Components\Select::make('color_id')->required()->relationship('color', 'nombre_color')
-                ->searchable()->preload(),
+                    ->searchable()->preload(),
 
                 Forms\Components\Select::make('tipo_vehiculo_id')->required()
-                ->relationship('tipoVehiculo', 'nombre_tipo')->searchable()->preload(),
+                    ->relationship('tipoVehiculo', 'nombre_tipo')->searchable()->preload(),
 
-                Forms\Components\TextInput::make('anio') ->required()->numeric()
+                Forms\Components\TextInput::make('anio')->required()->numeric()
                     ->minValue(1900)
-                    ->maxValue(date('Y')) 
-                    ->maxLength(4) 
+                    ->maxValue(date('Y'))
+                    ->maxLength(4)
                     ->label('Año'),
 
+                Forms\Components\TextInput::make('numero_motor')->required()->maxLength(50)->label('Número de Motor')->unique(ignoreRecord: true),
 
-                Forms\Components\TextInput::make('numero_motor')->required()->maxLength(50)->label('Número de Motor')  ->unique(ignoreRecord: true),
+                Forms\Components\TextInput::make('numero_chasis')->required()->maxLength(50)->label('Número de Chasis')->unique(ignoreRecord: true),
 
-                Forms\Components\TextInput::make('numero_chasis')->required()->maxLength(50)->label('Número de Chasis') ->unique(ignoreRecord: true),
+                Forms\Components\Select::make('propietario_id')
+                ->label('Propietario')
+                ->relationship('propietario', 'cip')
+                ->searchable()
+                ->preload(),
 
             ]);
     }
@@ -82,6 +89,7 @@ class VehiculoResource extends Resource
                 Tables\Columns\TextColumn::make('anio')->label('Año')->sortable(),
                 Tables\Columns\TextColumn::make('numero_motor')->label('Número de Motor'),
                 Tables\Columns\TextColumn::make('numero_chasis')->label('Número de Chasis'),
+                Tables\Columns\TextColumn::make('propietario.nombre')->label('Propietario')
             ])
             ->filters([
                 //

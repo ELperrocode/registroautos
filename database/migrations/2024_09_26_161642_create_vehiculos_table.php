@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('modelo_id');
             $table->unsignedBigInteger('color_id'); 
             $table->unsignedBigInteger('tipo_vehiculo_id'); 
+             $table->unsignedBigInteger('propietario_id');
             $table->integer('anio');
             $table->string('numero_motor')->unique();
             $table->string('numero_chasis')->unique();
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->foreign('modelo_id')->references('id_modelo')->on('modelos')->onDelete('cascade');
             $table->foreign('color_id')->references('id_color')->on('colors')->onDelete('cascade');
             $table->foreign('tipo_vehiculo_id')->references('id_tipo')->on('tipo_vehiculos')->onDelete('cascade');
+            $table->foreign('propietario_id')->references('id_propietario')->on('propietarios')->onDelete('cascade');
         });
         
     }

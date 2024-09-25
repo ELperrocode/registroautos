@@ -19,6 +19,7 @@ class ModeloResource extends Resource
     protected static ?string $model = Modelo::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-wrench';
+    protected static ?string $navigationGroup = 'Vehiculos';
 
     public static function form(Form $form): Form
     {

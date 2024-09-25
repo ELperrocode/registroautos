@@ -17,7 +17,8 @@ class TipoVehiculoResource extends Resource
 {
     protected static ?string $model = TipoVehiculo::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
+    protected static ?string $navigationIcon = 'heroicon-o-ellipsis-horizontal-circle';
+    protected static ?string $navigationGroup = 'Vehiculos';
 
     public static function form(Form $form): Form
     {

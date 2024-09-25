@@ -17,6 +17,7 @@ class Vehiculo extends Model
         'modelo_id',
         'color_id',
         'tipo_vehiculo_id',
+        'propietario_id',
         'anio',
         'numero_motor',
         'numero_chasis',
@@ -41,5 +42,11 @@ class Vehiculo extends Model
     public function tipoVehiculo()
     {
         return $this->belongsTo(TipoVehiculo::class, 'tipo_vehiculo_id', 'id_tipo');
+    }
+
+
+    public function propietario()
+    {
+        return $this->belongsTo(Propietario::class, 'propietario_id', 'id_propietario');
     }
 }

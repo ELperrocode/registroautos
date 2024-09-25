@@ -26,6 +26,8 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->favicon(asset('images/favicon.png'))
+            ->brandLogo(fn () => view('filament.logo'))
             ->id('admin')
             ->path('admin')
             ->login()

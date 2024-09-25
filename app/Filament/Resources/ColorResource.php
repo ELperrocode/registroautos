@@ -20,6 +20,7 @@ class ColorResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-swatch';
     protected static ?string $navigationLabel = 'Colores';
     protected static ?string $title = 'Colores';
+    protected static ?string $navigationGroup = 'Vehiculos';
 
     public static function form(Form $form): Form
     {

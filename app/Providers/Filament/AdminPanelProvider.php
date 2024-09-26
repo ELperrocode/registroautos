@@ -33,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->colors([
                 'danger' => Color::Red,
-                'gray' => Color::Jet,
+                'gray' => Color::PrussianBlue,
                 'info' => Color::Aquamarine,
                 'primary' => Color::ForestGreen ,
                 'success' => Color::Emerald,

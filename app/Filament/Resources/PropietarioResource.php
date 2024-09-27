@@ -26,9 +26,11 @@ class PropietarioResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nombre')
+                    ->regex('/^[a-zA-Z]+$/', 'El nombre solo puede contener letras.')
                     ->required()
                     ->maxLength(25),
                 Forms\Components\TextInput::make('apellido')
+                    ->regex('/^[a-zA-Z]+$/', 'El nombre solo puede contener letras.')
                     ->required()
                     ->maxLength(25),
                 Forms\Components\TextInput::make('telefono')

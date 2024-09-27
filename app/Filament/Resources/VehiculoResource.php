@@ -107,9 +107,11 @@ class VehiculoResource extends Resource
                     ->createOptionForm([
                         Forms\Components\TextInput::make('nombre')
                             ->required()
+                            ->regex('/^[a-zA-Z]+$/', 'El nombre solo puede contener letras.')
                             ->maxLength(25),
                         Forms\Components\TextInput::make('apellido')
                             ->required()
+                            ->regex('/^[a-zA-Z]+$/', 'El nombre solo puede contener letras.')
                             ->maxLength(25),
                         Forms\Components\TextInput::make('telefono')
                             ->required()

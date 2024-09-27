@@ -17,10 +17,11 @@ class Tipo_VehiculosTableSeeder extends Seeder
         // Inserta datos
         DB::table('tipo_vehiculos')->insert([
             ['nombre_tipo' => 'Sedán'],
-            ['nombre_tipo' => 'SUV'],
             ['nombre_tipo' => 'Camioneta'],
-            ['nombre_tipo' => 'Coupe'],
-            ['nombre_tipo' => 'Hatchback'],
+            ['nombre_tipo' => 'Deportivo'],
+            ['nombre_tipo' => 'Híbrido'],
+            ['nombre_tipo' => 'SUV'],
+         
         ]);
     }
 }

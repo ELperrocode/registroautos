@@ -13,4 +13,8 @@ class TipoVehiculo extends Model
         'nombre_tipo',
     ];
 
+    public function modelos()
+    {
+        return $this->hasMany(Modelo::class, 'tipo_id', 'id_tipo');
+    }
 }

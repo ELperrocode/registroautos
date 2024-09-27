@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id('id_modelo');
             $table->string('nombre_modelo');
             $table->unsignedBigInteger('marca_id'); 
+            $table->unsignedBigInteger('tipo_id');
             $table->timestamps();
-        
-            
+           
+
+            $table->foreign('tipo_id')->references('id_tipo')->on('tipo_vehiculos')->onDelete('cascade');
             $table->foreign('marca_id') ->references('id_marca') ->on('marcas')->onDelete('cascade');
         });
     }

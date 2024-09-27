@@ -31,7 +31,10 @@ class ModeloResource extends Resource
                     ->unique('modelos', 'nombre_modelo'),
                 Forms\Components\Select::make('marca_id')
                     ->required()
-                    ->relationship('marca', 'nombre_marca')
+                    ->relationship('marca', 'nombre_marca'),
+                Forms\Components\Select::make('tipo_id')
+                    ->required()
+                    ->relationship('tipo', 'nombre_tipo'),
             ]);
     }
 
@@ -44,6 +47,9 @@ class ModeloResource extends Resource
             Tables\Columns\TextColumn::make('marca.nombre_marca') 
                 ->label('Nombre de la Marca')
                 ->sortable(),
+                Tables\Columns\TextColumn::make('tipo.nombre_tipo')
+                ->label('Tipo de Vehículo')
+                ->sortable(),
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable()
@@ -52,6 +58,7 @@ class ModeloResource extends Resource
                 ->dateTime()
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
+           
         ])
         
             ->filters([

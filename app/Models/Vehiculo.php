@@ -43,7 +43,7 @@ class Vehiculo extends Model
     {
         return $this->belongsTo(TipoVehiculo::class, 'tipo_vehiculo_id', 'id_tipo');
     }
-
+    
 
     public function propietario()
     {

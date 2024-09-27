@@ -7,6 +7,7 @@ use App\Filament\Resources\VehiculoResource\RelationManagers;
 use App\Models\Vehiculo;
 use App\Models\Modelo;
 use App\Models\Marca;
+use App\Models\TipoVehiculo;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\FormsComponent;
@@ -47,7 +48,7 @@ class VehiculoResource extends Resource
                     ->reactive()
                     ->afterStateUpdated(function ($state, $set) {
                         $set('modelo_id', null);
-                        $set('tipo_vehiculo_id', null); // Asegura que tipo_vehiculo_id se restablezca
+                        $set('tipo_vehiculo_id', null); 
                     }),
 
                 Forms\Components\Select::make('modelo_id')
@@ -57,13 +58,12 @@ class VehiculoResource extends Resource
                         $marcaId = $get('marca_id');
                         return $marcaId ? Modelo::where('marca_id', $marcaId)->pluck('nombre_modelo', 'id_modelo') : [];
                     })
-                    ->searchable()
-                    ->preload()
-                    ->reactive()
+                    ->searchable()->preload()->reactive()
                     ->afterStateUpdated(function ($state, $set) {
                         $modelo = Modelo::find($state);
                         $set('tipo_vehiculo_id', $modelo ? $modelo->tipo_id : null);
                     }),
+             
 
                 Forms\Components\Select::make('color_id')
                     ->required()
@@ -129,7 +129,7 @@ class VehiculoResource extends Resource
                             ->unique(ignoreRecord: true)
                             ->maxLength(25),
                     ])
-                    ->label('Crear nuevo propietario'),
+                    ->label('Seleccionar o crear  propietario'),
             ]);
     }
 
